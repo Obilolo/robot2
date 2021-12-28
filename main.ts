@@ -1,7 +1,7 @@
 input.onButtonPressed(Button.A, function () {
-    Pixels.range(0, 1).showColor(neopixel.colors(NeoPixelColors.Blue))
+    Pixels.range(0, 2).showColor(neopixel.colors(NeoPixelColors.Blue))
     Pixels.setPixelColor(2, neopixel.colors(NeoPixelColors.White))
-    Pixels.range(3, 4).showColor(neopixel.colors(NeoPixelColors.Red))
+    Pixels.range(3, 2).showColor(neopixel.colors(NeoPixelColors.Red))
 })
 input.onButtonPressed(Button.AB, function () {
     Pixels.clear()
