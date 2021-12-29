@@ -1,24 +1,29 @@
 input.onButtonPressed(Button.A, function () {
-    Pixels.setPixelColor(0, neopixel.colors(NeoPixelColors.Yellow))
-    Pixels.setPixelColor(1, neopixel.colors(NeoPixelColors.Green))
-    Pixels.setPixelColor(2, neopixel.colors(NeoPixelColors.Blue))
-    Pixels.setPixelColor(3, neopixel.colors(NeoPixelColors.Purple))
-    Pixels.setPixelColor(4, neopixel.colors(NeoPixelColors.Orange))
+    Etat = "Gauche"
 })
 input.onButtonPressed(Button.AB, function () {
-    Pixels.clear()
-    Pixels.show()
+    Etat = "Stop"
 })
 input.onButtonPressed(Button.B, function () {
-    Pixels.showColor(neopixel.colors(NeoPixelColors.Indigo))
+    Etat = "Droite"
 })
-input.onLogoEvent(TouchButtonEvent.Pressed, function () {
-    Pixels.showColor(neopixel.colors(NeoPixelColors.Blue))
-})
-let Pixels: neopixel.Strip = null
-Pixels = neopixel.create(DigitalPin.P0, 5, NeoPixelMode.RGB)
+let Etat = ""
+let Pixels = neopixel.create(DigitalPin.P0, 5, NeoPixelMode.RGB)
+Etat = "Stop"
+Pixels.setPixelColor(0, neopixel.colors(NeoPixelColors.Yellow))
+Pixels.setPixelColor(1, neopixel.colors(NeoPixelColors.Green))
+Pixels.setPixelColor(2, neopixel.colors(NeoPixelColors.Blue))
+Pixels.setPixelColor(3, neopixel.colors(NeoPixelColors.Purple))
+Pixels.setPixelColor(4, neopixel.colors(NeoPixelColors.Orange))
 basic.forever(function () {
-    basic.pause(100)
-    Pixels.rotate(1)
-    Pixels.show()
+    if (Etat == "Droite") {
+        basic.pause(500)
+        Pixels.rotate(1)
+        Pixels.show()
+    }
+    if (Etat == "Gauche") {
+        basic.pause(500)
+        Pixels.rotate(-1)
+        Pixels.show()
+    }
 })
